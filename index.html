@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="sw">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TrueAlpha Play Zone</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* General Body Styles */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #0f1419; /* Dark background */
+            margin: 0;
+            padding: 0;
+            color: #f0f0f0;
+            box-sizing: border-box;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            background-color: #222; /* Darker container background */
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Header Section */
+        h1 {
+            text-align: center;
+            font-size: 3em;
+            margin-bottom: 20px;
+            color: #00ff00; /* Neon Green for title */
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            animation: glow 1.5s ease-in-out infinite; /* Glowing animation */
+        }
+
+        h2 {
+            font-size: 1.7em;
+            text-align: center;
+            color: #00ff00; /* Neon Green for sub-header */
+            margin-top: 20px;
+        }
+
+        .payment-section, .screenshot-section {
+            margin: 30px 0;
+        }
+
+        .notification {
+            background-color: #444; /* Dark background for notifications */
+            padding: 15px;
+            border-radius: 5px;
+            display: none;
+            text-align: center;
+            color: #00ff00; /* Neon Green */
+            font-size: 1.1em;
+            animation: glow 1.5s ease-in-out infinite; /* Glowing effect */
+        }
+
+        /* Payment Form */
+        .payment-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .payment-form input[type="file"] {
+            padding: 12px;
+            margin: 25px 0;
+            width: 80%;
+            border-radius: 5px;
+            border: 1px solid #444;
+            background-color: #222;
+            color: #00ff00; /* Neon Green */
+            font-size: 1.2em;
+        }
+
+        .payment-form input[type="submit"] {
+            padding: 15px 25px;
+            background-color: #00ff00; /* Neon Green for button */
+            color: black;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            width: 80%;
+            transition: background-color 0.3s ease-in-out, transform 0.2s ease;
+            font-size: 1.3em;
+        }
+
+        .payment-form input[type="submit"]:hover {
+            background-color: #008f00;
+            transform: scale(1.1);
+        }
+
+        /* Price Section */
+        .price-section {
+            background-color: #333; /* Dark background for price section */
+            padding: 25px;
+            text-align: center;
+            border-radius: 10px;
+            color: white;
+            border: 1px solid #444;
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.3); /* Green glow */
+        }
+
+        .price-section h3 {
+            margin: 0;
+            font-size: 2em;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #00ff00; /* Neon Green for heading */
+        }
+
+        .price-section p {
+            font-size: 1.2em;
+            margin-top: 15px;
+            color: #aaa;
+        }
+
+        /* Footer Section */
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            font-size: 1em;
+            color: #888;
+        }
+
+        footer a {
+            color: #00ff00; /* Neon Green for footer links */
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: #00e600; /* Brighter Green on hover */
+            text-decoration: underline;
+        }
+
+        /* Admin Dashboard for Payment Verification */
+        .admin-dashboard {
+            margin-top: 40px;
+            background-color: #222; /* Darker background */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #00ff00; /* Neon Green glow */
+        }
+
+        .admin-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            color: #f0f0f0;
+            background-color: #333;
+            border-radius: 10px;
+        }
+
+        .admin-table th, .admin-table td {
+            padding: 15px;
+            text-align: center;
+            border: 1px solid #00ff00; /* Green borders */
+        }
+
+        .admin-table th {
+            background-color: #444; /* Darker header background */
+            color: #00ff00; /* Neon Green */
+        }
+
+        .admin-table td {
+            background-color: #555;
+        }
+
+        .pending {
+            background-color: #ffcc00;
+        }
+
+        .verified {
+            background-color: #4caf50;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .container {
+                padding: 15px;
+            }
+
+            .payment-form input[type="file"],
+            .payment-form input[type="submit"] {
+                width: 100%;
+            }
+        }
+
+        /* Glowing effect for the game title */
+        @keyframes glow {
+            0% {
+                text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00, 0 0 15px #00ff00;
+            }
+            50% {
+                text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00;
+            }
+            100% {
+                text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00, 0 0 15px #00ff00;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>TrueAlpha Play Zone</h1>
+
+    <!-- Price Section -->
+    <div class="price-section">
+        <h3>Game Premium</h3>
+        <p>Bei: TZS 5,000</p>
+        <p><strong>Malipo ya HaloPesa</strong> kwa namba 0617706990 (TAJI ADAMU MTAULA)</p>
+    </div>
+
+    <!-- Payment Section -->
+    <div class="payment-section">
+        <h2>Fanya Malipo kwa HaloPesa</h2>
+        <p>Tafadhali tumia namba ya malipo: <strong>0617706990</strong> na jina <strong>TAJI ADAMU MTAULA</strong> kwa malipo ya TZS 5,000. Kisha, tuma screenshot ya muamala ili kuthibitisha malipo yako.</p>
+    </div>
+
+    <!-- Screenshot Upload Section -->
+    <div class="screenshot-section">
+        <h2>Tuma Screenshot ya Muamala</h2>
+        <form class="payment-form" id="payment-form" method="POST" enctype="multipart/form-data">
+            <input type="file" name="transaction_screenshot" accept="image/*" required>
+            <input type="submit" value="Tuma Screenshot">
+        </form>
+
+        <div class="notification" id="notification">
+            Malipo yako yamepokelewa. Tutakuthibitisha baada ya uhakiki.
+        </div>
+    </div>
+
+    <!-- Admin Dashboard for Payment Verification -->
+    <div class="admin-dashboard">
+        <h2>Admin Dashboard (Verification)</h2>
+        <table class="admin-table" id="admin-table">
+            <thead>
+                <tr>
+                    <th>ID ya Mchezaji</th>
+                    <th>Screenshot</th>
+                    <th>Status</th>
+                    <th>Download</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Dynamic content will be inserted here by JS -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2026 True Alpha Games | <a href="#">Msaada</a></p>
+    </footer>
+</div>
+
+<script>
+    let paymentData = []; // To store payment and screenshot info
+
+    // Handle payment form submission
+    document.getElementById("payment-form").addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        // Get the uploaded file
+        var fileInput = document.querySelector('input[type="file"]');
+        var file = fileInput.files[0];
+
+        if (file) {
+            // Simulate file upload and payment verification process
+            document.getElementById("notification").style.display = "block";
+            setTimeout(function() {
+                alert("Malipo yamepokelewa. Tutakuthibitisha baada ya uhakiki.");
+
+                // Simulate storing the payment info for the admin dashboard
+                const playerId = `ID-${Date.now()}`;
+                paymentData.push({ playerId, fileName: file.name, status: "Pending", file: file });
+                updateAdminDashboard();
+            }, 3000); // Wait for 3 seconds before confirming
+        } else {
+            alert("Tafadhali chagua picha ya muamala.");
+        }
+    });
+
+    // Update the Admin Dashboard
+    function updateAdminDashboard() {
+        const tableBody = document.getElementById("admin-table").getElementsByTagName("tbody")[0];
+        tableBody.innerHTML = ""; // Clear previous data
+        paymentData.forEach(function(payment) {
+            const row = tableBody.insertRow();
+            row.innerHTML = `
+                <td>${payment.playerId}</td>
+                <td><img src="#" alt="Screenshot" style="width: 50px; height: 50px;"></td>
+                <td class="${payment.status === 'Pending' ? 'pending' : 'verified'}">${payment.status}</td>
+                <td>
+                    ${payment.status === 'Verified' ? 
+                        `<a href="https://downloads.romspedia.com/roms/God%20of%20War%20-%20Ghost%20of%20Sparta%20%28USA%29%20%28En%2CFr%2CEs%29%20%28v2.00%29.zip">Download Game</a>` : 
+                        '<span>Not Approved</span>'}
+                </td>
+            `;
+        });
+    }
+
+    // Simulate 6 minutes delay for verification
+    setTimeout(() => {
+        paymentData.forEach(payment => {
+            if (payment.status === "Pending") {
+                payment.status = "Verified"; // Change status to verified
+            }
+        });
+        updateAdminDashboard();
+    }, 360000); // 6 minutes
+</script>
+
+</body>
+</html>l>0000); // 6 minutes
+</script>
+
+</body>
+</html>l>>l>
